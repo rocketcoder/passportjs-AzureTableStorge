@@ -35,7 +35,7 @@ module.exports = function (passport) {
                         }).fail(function (err) { 
                             if (err) {
                                 console.log('Error in Saving user: ' + err);
-                                throw err;
+                                return done(null, newUser);
                             }    
                         });
                     }

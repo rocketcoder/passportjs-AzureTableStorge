@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Your Title Here</title>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">    
+
+		<!-- Bootstrap -->
+		<link href="./bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+		<% include menu %>
+		<% include flashContainer %>
+		<div class="container">
+			<form action="/signup" method="post" role="form" class="form-horizontal">
+				<div class="form-group">
+					<label>First Name:<span class="validationMessage"></span></label>
+					<input type="text" name="firstName" class="form-control" placeholder="first name"/>
+				</div>
+				<div class="form-group">
+					<label>Last Name:<span class="validationMessage"></span></label>
+					<input type="text" name="lastName" class="form-control" placeholder="last name"/>
+				</div>
+				<div class="form-group">
+					<label>Email:<span class="validationMessage"></span></label>
+					<input type="text" name="email" validate-email="true" class="form-control" placeholder="email"/>
+				</div>
+				<div class="form-group">
+					<label>User Name:<span class="validationMessage"></span></label>
+					<input type="text" id="username" name="username" validate-username="true" class="form-control" placeholder="user name"/>
+				</div>
+				<div class="form-group">
+					<label>Password:<span class="validationMessage"></span></label>
+					<input type="password" name="password" validate-password="true" class="form-control" placeholder="password"/>
+				</div>
+				<div class="form-group">
+					<input type="submit" value="Sign Up" class="btn btn-primary"/>
+				</div>
+			</form>
+		</div>
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script>
+			function setValidationState(element, validationState, message){
+				if(element){	
+					var formGroup = element.parent();
+					formGroup.find(".validationMessage").text("");
+					formGroup.removeClass("has-error");
+					formGroup.removeClass("has-success");
+					formGroup.removeClass("has-warning");
+
+					if(validationState === false){
+						formGroup.addClass("has-error");
+						formGroup.find(".validationMessage").text(message);
+					}
+					if(validationState === true)
+						formGroup.addClass("has-success");
+					if(!validationState)
+						formGroup.addClass("has-warning");
+				}
+			}
+			function validateUserName(){
+				var userNameElement = $('#username');
+				var userName = userNameElement.val();
+				if(userName && userName.length > 3){
+					$.ajax({
+						url : "/userNameExists",
+						data : {username: userName}
+					})
+					.then(function(result){
+						var userExists = result.userNameExists;						
+						setValidationState(userNameElement, !userExists, "snap.  that user name is taken.");
+					})
+					.fail(function(result){
+						setValidationState(userNameElement, false, "Doh!  That user name is already in use.");
+					});
+				}
+			}
+
+			function validateInput(){
+				var element = $(this);
+				var value = element.val().trim();
+				if(value.length < 2){
+					setValidationState(element, false, "We kinda need this to setup your account.  Thanks.");
+				}
+				else if(element.attr("validate-email") === "true"){
+					if(value.indexOf("@") <= 0)					
+						setValidationState(element, false, "We need a valid email so we can notify you of issues with your invoices.");
+					else
+						setValidationState(element, true);
+				}
+				else if(element.attr("validate-password") === "true"){
+					if(value.length <= 6)					
+						setValidationState(element, false, "Yeah...you really don't want a password like that.  Its cool.  We got your back like that.");
+					else
+						setValidationState(element, true);
+				}
+				else if(element.attr("validate-username") === "true"){
+					validateUserName();
+				}
+				else{
+					setValidationState(element, true);
+				}
+			}
+
+			$('form input').on("blur", validateInput);
+		</script>
+	</body>
+</html>

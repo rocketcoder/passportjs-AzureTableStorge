@@ -4,6 +4,16 @@ passportjs-AzureTableStorge
 A PassportJS strategy backed by Azure table storage.
 
 Quick Start
+
+express
+npm install express-session
+npm install passport
+npm install passport-local
+npm install azure-storage
+npm install q
+npm install bcrypt-nodejs
+npm install connect-flash
+
 ```javascript
 
 //...
@@ -25,5 +35,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 var initPassport = require('./passport/init');
 initPassport(passport);
+app.use('/', routes(passport));
 
 ```

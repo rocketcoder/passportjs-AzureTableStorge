@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Your Title Here</title>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">    
+
+		<!-- Bootstrap -->
+		<link href="./bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+		<% include ../menu %>		
+		<div class="container">
+			<div class="panel panel-primary">
+				<div class="panel-heading">You are gonna love this!  We just need a few more things to start the ebilling magic.</div>
+				<div class="panel-body">					
+					<h6>We need to learn a few things about your firm. We just need a single file for each client you will be billing.</h6>
+					<h6>Copy and paste or upload the file and we will inspect it.  Then we will need to answer a few questions.  We can usually get this done in less than 5 minutes.</h6>					
+					
+					<div class="panel panel-default">					
+						<div class="panel-heading">Step 1: copy and paste a bill file</div>
+						<div class="panel-body">							
+							<textarea id="billFileText" rows="4" cols="100">
+
+							</textarea>	
+							<table class="table">	
+								<tr>		
+									<td><h4>Client <span>xxxxx</span></h4><td>														
+									<td>		
+										<div class="btn-group">
+										  <button type="button" class="btn btn-default">Select a Vendor</button>
+										  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+											<span class="caret"></span>
+											<span class="sr-only">Toggle Dropdown</span>
+										  </button>
+										  <ul class="dropdown-menu" role="menu">
+											<li><a href="#">Acuity</a></li>
+											<li><a href="#">Advocator System</a></li>
+											<li><a href="#">Allegient Systems</a></li>
+											<li><a href="#">Collaborati</a></li>
+											<li><a href="#">Corridor</a></li>
+											<li><a href="#">CounselLink</a></li>
+											<li><a href="#">DataCert Collaboration</a></li>
+											<li><a href="#">Legal Bill</a></li>
+											<li><a href="#">Legal Bill Review</a></li>
+											<li><a href="#">Legal Exchange</a></li>
+											<li><a href="#">Legal Solutions</a></li>
+											<li><a href="#">Legal Precision</a></li>
+											<li><a href="#">Serengeti</a></li>
+											<li><a href="#">Stuart Maue</a></li>
+											<li><a href="#">TyMetrix</a></li>
+											<li><a href="#">TyMetrix 360</a></li>
+											<li><a href="#">Visibillity</a></li>
+										  </ul>
+										</div>
+									</td>
+									<td>		
+										<div class="btn-group">
+										  <button type="button" class="btn btn-default">Select a Client</button>
+										  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+											<span class="caret"></span>
+											<span class="sr-only">Toggle Dropdown</span>
+										  </button>
+										  <ul class="dropdown-menu" role="menu">
+											<li><a href="#">ACME</a></li>
+											<li><a href="#">Beta Co</a></li>
+											<li><a href="#">Capcom LLC</a></li>											
+										  </ul>
+										</div>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>								
+				</div>
+			</div>
+		</div>
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,4 +1,4 @@
 ﻿var config = {
-    storageAccountKey : "DefaultEndpointsProtocol=https;AccountName=yourAccount;AccountKey=yourSuperSecretKey"
+    storageAccountKey: "DefaultEndpointsProtocol=https;AccountName=YourAccountHere;AccountKey=YourKeyHere"
 };
 module.exports = config;

@@ -1,0 +1,27 @@
+<%if (messages.errorMessage) { %>
+  <div class="alert alert-danger" role="alert">
+    <%= messages.errorMessage %>
+    </div>
+<% } %>
+  
+<%if (messages.warningMessage="") { %>
+  <div class="alert alert-warning" role="alert">
+    <%= messages.warningMessage %>
+    </div>
+<% } %>
+  
+<%if (messages.infoMessage="") { %>
+  <div class="alert alert-info" role="alert">
+    <%= messages.infoMessage %>
+    </div>
+<% } %>
+  
+<%if (messages.successMessage="") { %>
+  <div class="alert alert-success" role="alert">
+    <%= messages.successMessage %>
+    </div>
+<% } %>
+  
+
+
+
