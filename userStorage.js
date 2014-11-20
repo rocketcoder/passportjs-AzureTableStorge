@@ -5,7 +5,6 @@
 
 var azure = require("azure-storage");
 var q = require('q');
-var User = require('../storage/userStorage.js');
 var config = require('../config.js');
 var bCrypt = require('bcrypt-nodejs');
 
