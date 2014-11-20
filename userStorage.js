@@ -5,7 +5,7 @@
 
 var azure = require("azure-storage");
 var q = require('q');
-var config = require('../config.js');
+var config = require('./config.js');
 var bCrypt = require('bcrypt-nodejs');
 
 
